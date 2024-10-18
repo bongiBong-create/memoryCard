@@ -18,6 +18,7 @@ export default [
       },
     },
     settings: { react: { version: '18.3' } },
+    "extends": ["eslint:all", "plugin:react/all"],
     plugins: {
       react,
       'react-hooks': reactHooks,

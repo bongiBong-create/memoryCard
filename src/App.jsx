@@ -1,28 +1,65 @@
 import './App.css';
-import { getApi } from './data/getApi';
 import { useState, useEffect } from 'react';
+import { getApi } from './data/getApi';
+import Background from './components/background';
+import Header from './components/header';
+import Cards from './components/Cards';
+import Menu from './components/Menu';
+import Score from './components/Score';
+import Lose from './components/Lose';
+import Win from './components/Win';
 
 function App() {
-  const [img, setImg] = useState(null)
+  const [charactersPick, setCharactersPick] = useState([])
+  const [imgs, setImg] = useState(null);
+  const [flag, setFlag] = useState(false);
+  const [score, setScore] = useState(0);
+  const [win, setWin] = useState(false)
+  const [lose, setLose] = useState(false)
 
   useEffect(() => {
-    const getImgs =  async () => {
+    const getImgs = async () => {
       const imgs = await getApi();
       setImg(() => imgs.data)
     }
-  getImgs()
-  
+    getImgs()
   }, [])
 
-  console.log(img)
+  const handleFlag = () => {
+    setFlag((flag) => !flag)
+  }
+
+  const clear = () => {
+    setWin(false)
+    setLose(false)
+    setScore(0)
+    setCharactersPick([])
+  }
 
   return (
-    <>
-    {img ? img.map((item, i) => {
-      return <img key={i} src={item.character.images.jpg.image_url}/>
-    }): "loading..."}
-    </>
-  )
-}
+    <main className='main'>
+      <Background />
 
-export default App
+      {flag ? <section className='play'>
+        <Header handle={handleFlag} style="img__Shama logo" />
+        <Cards
+          score={score}
+          setScore={setScore}
+          data={imgs}
+          setWin={setWin}
+          setLose={setLose}
+          charactersPick={charactersPick}
+          setCharactersPick={setCharactersPick}
+        />
+        <Score score={score} />
+      </section> : ""}
+
+      {win ? <Win clear={clear} /> : ""}
+      {lose ? <Lose clear={clear}/> : ""}
+
+      {!flag ? <Menu onclick={handleFlag} /> : ""}
+    </main>
+  );
+};
+
+export default App;

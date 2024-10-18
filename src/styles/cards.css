@@ -1,0 +1,27 @@
+.cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.card__item {
+  border: 10px solid #000;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  transition: all .3s;
+}
+
+.card__item:hover {
+  -webkit-box-shadow: 4px 4px 31px 30px #000;
+  -moz-box-shadow: 4px 4px 31px 30px #000;
+  box-shadow: 4px 4px 31px 30px #000;
+}
+
+.card__item img {
+  max-width: 157px;
+  width: 100%;
+  cursor: pointer;
+}
