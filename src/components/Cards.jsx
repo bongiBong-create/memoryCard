@@ -49,7 +49,7 @@ export default function Cards({ charactersPick, setCharactersPick, score, setSco
       setLose(true)
     }
 
-    if (score == 5) {
+    if (score == 7) {
       setWin(true)
     }
   }

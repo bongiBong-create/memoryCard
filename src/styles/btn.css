@@ -5,7 +5,6 @@ button {
   font-size: 60px;
   color: rgb(113, 183, 240);
   transition: all .3s;
-  width: 400px;
+  max-width: 400px;
 }
 
-button:hover {}
