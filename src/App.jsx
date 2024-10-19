@@ -1,14 +1,14 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { getApi } from './data/getApi';
-import Header from './components/header';
+import Header from './components/Header';
 import Cards from './components/Cards';
 import Menu from './components/Menu';
 import Score from './components/Score';
 import Lose from './components/Lose';
 import Win from './components/Win';
 import Music from './components/Music';
-import Background from './components/background';
+import Background from './components/Background';
 
 
 function App() {
